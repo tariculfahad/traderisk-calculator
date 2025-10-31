@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeRisk Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Currency Change Modal/Pop-up -->
+    <div id="currency-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Select Currency</h3>
+            <ul>
+                <li data-currency="USD">USD</li>
+                <li data-currency="EUR">EUR</li>
+                <li data-currency="GBP">GBP</li>
+                <li data-currency="JPY">JPY</li>
+                <li data-currency="AUD">AUD</li>
+                <li data-currency="INR">INR</li>
+            </ul>
+            <button id="close-modal-btn">Close</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>TradeRisk Calculator</h1>
+        <div class="calculator">
+            <div class="input-group">
+                <label for="account-balance">Account Balance (<span id="currency-text">USD</span>)</label>
+                <input type="number" id="account-balance" placeholder="Balance">
+            </div>
+            <div class="input-group">
+                <label for="risk-percentage">Risk % per Trade</label>
+                <input type="number" id="risk-percentage" placeholder="Risk">
+            </div>
+            <div class="input-group">
+                <label for="stop-loss">Stop Loss (pips)</label>
+                <input type="number" id="stop-loss" placeholder="Pips">
+            </div>
+            <div class="input-group">
+                <label for="pair">Pair</label>
+                <select id="pair">
+                    <option value="EURUSD" selected>EUR/USD</option>
+                    <option value="GBPUSD">GBP/USD</option>
+                    <option value="USDJPY">USD/JPY</option>
+                    <option value="AUDUSD">AUD/USD</option>
+                    <option value="USDCAD">USD/CAD</option>
+                </select>
+            </div>
+        </div>
+        <button id="calculate-btn">Calculate</button>
+        
+        <div class="results">
+            <div class="result-item">
+                <span class="icon">&#36;</span>
+                <p>Risk Amount: <span id="risk-amount">N/A</span></p>
+            </div>
+            <div class="result-item">
+                <span class="icon">&#128202;</span>
+                <p>Lot Size: <span id="lot-size">N/A</span></p>
+            </div>
+            <div class="result-item">
+                <span class="icon">&#9889;</span>
+                <p>Reward: <span id="reward-amount">N/A</span></p>
+            </div>
+        </div>
+
+        <h2 id="chart-pair-title">EUR/USD</h2>
+        <div id="tradingview-chart-container" class="tradingview-widget-container"></div>
+        
+        <div class="ads-area">
+            <p>Ads Areya</p>
+        </div>
+    </div>
+
+    <!-- TradingView API Script -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
