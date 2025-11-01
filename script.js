@@ -10,9 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const pairSelect = document.getElementById('pair');
     const chartTitle = document.getElementById('chart-pair-title');
     const rrRatioSelect = document.getElementById('rr-ratio');
+    
+    // Chart control elements
+    const timeframeButtons = document.querySelectorAll('.timeframe-btn');
+    const chartTypeButtons = document.querySelectorAll('.chart-type-btn');
+
     let tradingViewWidget;
     let selectedCurrency = 'USD';
     let lastCalculatedRiskAmount = null;
+    let currentInterval = '240';
+    let currentStyle = 1;
 
     const pipValues = {
         'EURUSD': 10, 'GBPUSD': 10, 'AUDUSD': 10, 'USDCAD': 10,
@@ -39,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedCurrency = option.getAttribute('data-currency');
             currencyText.textContent = selectedCurrency;
             currencyModal.style.display = 'none';
-            // Recalculate if values are already present
             if (lastCalculatedRiskAmount !== null) {
                 calculateRisk();
             }
@@ -84,16 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- TradingView Chart Logic ---
     function createTradingViewWidget(symbol) {
         const container = document.getElementById('tradingview-chart-container');
-        if (!container) return; // Stop if container doesn't exist
+        if (!container) return;
         container.innerHTML = ''; 
         
         tradingViewWidget = new TradingView.widget({
             "autosize": true,
             "symbol": symbol,
-            "interval": "15",
+            "interval": currentInterval,
+            "style": currentStyle,
             "timezone": "Etc/UTC",
             "theme": "dark",
-            "style": "1",
             "locale": "en",
             "enable_publishing": false,
             "hide_top_toolbar": true,
@@ -113,6 +119,26 @@ document.addEventListener('DOMContentLoaded', () => {
         chartTitle.textContent = pairText;
         const chartSymbol = selectedPair === 'XAUUSD' ? 'OANDA:XAUUSD' : `FX:${selectedPair}`;
         createTradingViewWidget(chartSymbol);
+    });
+
+    timeframeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            timeframeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            currentInterval = button.getAttribute('data-interval');
+            const currentSymbol = pairSelect.value === 'XAUUSD' ? 'OANDA:XAUUSD' : `FX:${pairSelect.value}`;
+            createTradingViewWidget(currentSymbol);
+        });
+    });
+
+    chartTypeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            chartTypeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            currentStyle = parseInt(button.getAttribute('data-style'));
+            const currentSymbol = pairSelect.value === 'XAUUSD' ? 'OANDA:XAUUSD' : `FX:${pairSelect.value}`;
+            createTradingViewWidget(currentSymbol);
+        });
     });
 
     // --- Initial Load ---

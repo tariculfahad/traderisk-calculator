@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO Meta Tags -->
-    <title>TradeRisk Calculator - Forex Lot Size & Risk Management Tool for Traders</title>
+    <title>TradeRisk Calculator - Forex Lot Size & Risk Management Tool</title>
     <meta name="description" content="Calculate your forex trade risk, lot size, and reward ratio in seconds with our free and easy-to-use TradeRisk Calculator. The best risk management tool for Bangladeshi traders.">
     <meta name="keywords" content="forex risk calculator, position size calculator, lot size calculator, risk management, trading tool, forex bangla">
 
@@ -53,6 +52,8 @@
                     <option value="AUDUSD">AUD/USD</option>
                     <option value="USDCAD">USD/CAD</option>
                     <option value="XAUUSD">XAU/USD (Gold)</option>
+                    <option value="BTCUSD">BTC/USD (Bitcoin)</option>
+                    <option value="ETHUSD">ETH/USD (Ethereum)</option>
                 </select>
             </div>
         </div>
@@ -67,7 +68,6 @@
                 <span class="icon">&#128202;</span>
                 <p>Lot Size: <span id="lot-size">N/A</span></p>
             </div>
-            <!-- Reward Ratio Selector - New Feature -->
             <div class="result-item rr-selector">
                 <label for="rr-ratio">Reward Ratio:</label>
                 <select id="rr-ratio">
@@ -89,7 +89,23 @@
             </div>
         </div>
 
-        <h2 id="chart-pair-title">EUR/USD</h2>
+        <div class="chart-header">
+            <h2 id="chart-pair-title">EUR/USD</h2>
+            <div class="chart-controls">
+                <div class="timeframe-controls">
+                    <button class="timeframe-btn" data-interval="1">1M</button>
+                    <button class="timeframe-btn" data-interval="5">5M</button>
+                    <button class="timeframe-btn" data-interval="15">15M</button>
+                    <button class="timeframe-btn" data-interval="60">1H</button>
+                    <button class="timeframe-btn active" data-interval="240">4H</button>
+                    <button class="timeframe-btn" data-interval="D">1D</button>
+                </div>
+                <div class="chart-type-controls">
+                    <button class="chart-type-btn active" data-style="1">Candles</button>
+                    <button class="chart-type-btn" data-style="3">Line</button>
+                </div>
+            </div>
+        </div>
         <div id="tradingview-chart-container" class="tradingview-widget-container"></div>
         
         <div class="ads-area">
@@ -97,7 +113,6 @@
         </div>
     </div>
 
-    <!-- SEO Content Section - New Feature -->
     <section class="seo-content">
         <div class="content-wrapper">
             <h2>How to Use the TradeRisk Calculator</h2>
@@ -109,7 +124,6 @@
                 <li><strong>Pair:</strong> Select the currency pair you are trading from the dropdown menu.</li>
                 <li><strong>Calculate:</strong> Click the "Calculate" button to see your results instantly!</li>
             </ol>
-
             <h2>Why is Risk Management Important in Trading?</h2>
             <p>Risk management is the key to long-term success in the forex market. It's not about winning every trade; it's about making sure your losses are small and your wins are big enough to cover those losses and make a profit. By using a position size calculator like ours, you ensure that no single trade can wipe out your account. Proper risk management protects your capital, reduces emotional decision-making, and allows you to trade with confidence.</p>
         </div>
