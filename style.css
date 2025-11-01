@@ -5,7 +5,7 @@ body {
     background-color: #121826;
     color: #ffffff;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
     margin: 0;
@@ -21,6 +21,7 @@ body {
     width: 100%;
     max-width: 420px;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 h1 {
@@ -48,7 +49,7 @@ h1 {
 }
 
 #currency-text {
-    color: #3B82F6; /* Blue color for currency */
+    color: #3B82F6;
     cursor: pointer;
     font-weight: 500;
 }
@@ -108,6 +109,21 @@ h1 {
     text-align: center;
 }
 
+.rr-selector {
+    justify-content: space-between;
+}
+.rr-selector label {
+    color: #E2E8F0;
+}
+.rr-selector select {
+    background-color: #2D3748;
+    border: 1px solid #4A5568;
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 5px 8px;
+    font-size: 0.9em;
+}
+
 #chart-pair-title {
     text-align: left;
     margin: 0 0 10px 0;
@@ -123,11 +139,12 @@ h1 {
 .ads-area {
     background-color: #0D1117;
     padding: 15px;
-    border: 2px solid #FFD700; /* Yellow border */
+    border: 2px solid #FFD700;
     border-radius: 8px;
 }
 
-/* Modal/Pop-up Styles */
+/* --- Modal/Pop-up Styles --- */
+/* এই অংশটি পপ-আপ বক্সটিকে ডিজাইন করে */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -147,10 +164,12 @@ h1 {
     border-radius: 10px;
     width: 80%;
     max-width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .modal-content h3 {
     margin-top: 0;
+    text-align: center;
 }
 
 .modal-content ul {
@@ -164,6 +183,7 @@ h1 {
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.2s;
+    text-align: center;
 }
 
 .modal-content ul li:hover {
@@ -178,4 +198,40 @@ h1 {
     border-radius: 6px;
     color: white;
     cursor: pointer;
+}
+/* --- End of Modal Styles --- */
+
+
+/* SEO Content Styles */
+.seo-content {
+    width: 100%;
+    max-width: 700px;
+    background-color: #1A2035;
+    padding: 30px;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.content-wrapper {
+    text-align: left;
+    line-height: 1.6;
+}
+
+.content-wrapper h2 {
+    font-size: 1.8em;
+    color: #3B82F6;
+    margin-bottom: 15px;
+}
+
+.content-wrapper p, .content-wrapper li {
+    color: #a0aec0;
+    font-size: 1.1em;
+}
+
+.content-wrapper ol {
+    padding-left: 20px;
+}
+
+.content-wrapper ol li {
+    margin-bottom: 10px;
 }
